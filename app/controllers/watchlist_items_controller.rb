@@ -38,7 +38,10 @@ class WatchlistItemsController < ApplicationController
   def destroy
     @watchlist_item.destroy
 
-    redirect_to :back, :notice => "Watchlist item deleted."
+    respond_to do |format|
+      format.html {redirect_to :back, :notice => "Watchlist item deleted."}
+      format.js {render 'destroy'}
+    end
   end
 
   def watch

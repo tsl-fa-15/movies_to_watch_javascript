@@ -1,6 +1,6 @@
 <% watchlist_item = WatchlistItem.where(movie_id: the_movie.id, user_id: current_user.id).first %>
 <% if watchlist_item %>
-  <%= link_to watchlist_item_path(watchlist_item), method: :delete, class: 'btn btn-danger' do %>
+  <%= link_to watchlist_item_path(watchlist_item), method: :delete, remote: true, class: 'btn btn-danger' do %>
     <i class="fa fa-times"></i> Remove from watch list
   <% end %>
 <% else %>
