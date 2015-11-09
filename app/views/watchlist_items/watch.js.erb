@@ -1,3 +1,5 @@
-$('#mark_movie_<%= @watchlist_item.movie_id %>_watched').replaceWith('<%= j(render('movies/watched_button', movie: @watchlist_item.movie)) %>');
+$('#watchlist_item_<%= @watchlist_item.id %>').remove();
+$('#watched-items').append('<%= j(render('watchlist_item', item: @watchlist_item)) %>');
+$('#watchlist_item_<%= @watchlist_item.id %>').hide().fadeIn();
 
 $('#add_movie_<%= @watchlist_item.movie_id %>_to_watchlist').replaceWith('<%= j(render('movies/watchlist_button', the_movie: @watchlist_item.movie)) %>')

@@ -13,20 +13,15 @@
 <div class="row">
   <div class='col-xs-12'>
     <h2>Movies you want to watch</h2>
-    <table class="table">
+    <table class="table" id="unwatched-items">
       <tr>
         <th>User</th>
         <th>Movie</th>
         <th></th>
         <th></th>
       </tr>
-      <% @watchlist_items.each do |item| %>
-        <tr id="watchlist_item_<%= item.id %>">
-          <td><%= item.user.email %></td>
-          <td><%= link_to item.movie.title, item.movie %></td>
-          <td><%= render('movies/watched_button', movie: item.movie) %></td>
-          <td><%= render('movies/watchlist_button', the_movie: item.movie) %></td>
-        </tr>
+      <% @unwatched_items.each do |item| %>
+        <%= render 'watchlist_item', item: item %>
       <% end %>
     </table>
   </div>
@@ -34,5 +29,16 @@
 <div class="row">
   <div class="col-xs-12">
     <h2>Movies you've watched</h2>
+    <table class="table" id="watched-items">
+      <tr>
+        <th>User</th>
+        <th>Movie</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% @watched_items.each do |item| %>
+        <%= render 'watchlist_item', item: item %>
+      <% end %>
+    </table>
   </div>
 </div>

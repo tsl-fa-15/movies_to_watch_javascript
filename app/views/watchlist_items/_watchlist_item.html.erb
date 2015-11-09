@@ -1,0 +1,6 @@
+<tr id="watchlist_item_<%= item.id %>">
+  <td><%= item.user.email %></td>
+  <td><%= link_to item.movie.title, item.movie %></td>
+  <td><%= render('movies/watched_button', movie: item.movie) %></td>
+  <td><%= render('movies/watchlist_button', the_movie: item.movie) %></td>
+</tr>
