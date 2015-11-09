@@ -1,1 +1,5 @@
 $('#mark_movie_<%= @watchlist_item.movie_id %>_unwatched').replaceWith('<%= j(render('movies/watched_button', movie: @watchlist_item.movie)) %>');
+
+$('#watchlist_item_<%= @watchlist_item.id %>').remove();
+$('#unwatched-items').append('<%= j(render('watchlist_item', item: @watchlist_item)) %>');
+$('#watchlist_item_<%= @watchlist_item.id %>').hide().fadeIn();

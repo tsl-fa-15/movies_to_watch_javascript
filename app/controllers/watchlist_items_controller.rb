@@ -5,8 +5,8 @@ class WatchlistItemsController < ApplicationController
 
   def index
     @watchlist_items = WatchlistItem.all
-    @watched_items = WatchlistItem.where(watched: true)
-    @unwatched_items = WatchlistItem.where(watched: false)
+    @watched_items = WatchlistItem.where(watched: true).order(updated_at: :asc)
+    @unwatched_items = WatchlistItem.where(watched: false).order(updated_at: :asc)
   end
 
   def show
