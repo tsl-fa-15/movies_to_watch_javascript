@@ -4,7 +4,7 @@
     <i class="fa fa-times"></i> Remove from watch list
   <% end %>
 <% else %>
-  <%= form_for WatchlistItem.new, html: {:id => "add_movie_#{the_movie.id}_to_watchlist"} do %>
+  <%= form_for WatchlistItem.new, remote: true, html: {:id => "add_movie_#{the_movie.id}_to_watchlist"} do %>
     <input type="hidden" value="<%= current_user.id %>" name="watchlist_item[user_id]">
     <input type="hidden" value="<%= the_movie.id %>" name="watchlist_item[movie_id]">
     <button class="btn btn-success">

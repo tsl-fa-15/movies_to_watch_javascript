@@ -18,7 +18,10 @@ class WatchlistItemsController < ApplicationController
     @watchlist_item = WatchlistItem.new(watchlist_item_params)
 
     if @watchlist_item.save
-      redirect_to movies_url, :notice => "Watchlist item created successfully."
+      respond_to do |format|
+        format.html {redirect_to movies_url, :notice => "Watchlist item created successfully."}
+        format.js {render 'create'}
+      end
     else
       render 'new'
     end

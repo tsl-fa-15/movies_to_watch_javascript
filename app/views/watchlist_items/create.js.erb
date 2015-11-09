@@ -1,0 +1,1 @@
+$('#add_movie_<%= @watchlist_item.movie_id %>_to_watchlist').replaceWith('<%= j(render('movies/watchlist_button', the_movie: @watchlist_item.movie)) %>');
