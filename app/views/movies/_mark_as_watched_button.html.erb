@@ -1,0 +1,7 @@
+<%= form_tag watch_watchlist_item_path, remote: true, id: "mark_movie_#{movie.id}_watched", class: 'movie-panel-button' do %>
+  <input type="hidden" value="<%= current_user.id %>" name="user_id">
+  <input type="hidden" value="<%= movie.id %>" name="movie_id">
+  <button class="btn btn-success">
+    <i class="fa fa-check"></i> Mark as watched
+  </button>
+<% end %>

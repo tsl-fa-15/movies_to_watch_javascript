@@ -1,0 +1,1 @@
+$('#mark_movie_<%= @watchlist_item.movie_id %>_unwatched').replaceWith('<%= j(render('movies/watched_button', movie: @watchlist_item.movie)) %>');

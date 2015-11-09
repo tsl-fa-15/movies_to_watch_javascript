@@ -55,7 +55,11 @@ class WatchlistItemsController < ApplicationController
       if @watchlist_item.user.watched_movie_count == 3
         WatchlistMailer.novice_level_achieved(@watchlist_item.user).deliver_now
       end
-      redirect_to movies_url, notice: "Movie marked as watched"
+
+      respond_to do |format|
+        format.html { redirect_to movies_url, notice: "Movie marked as watched" }
+        format.js
+      end
     else
       redirect_to movies_url, notice: "There was an error marking your movie as watched"
     end
@@ -66,7 +70,10 @@ class WatchlistItemsController < ApplicationController
     @watchlist_item.save
 
     if @watchlist_item.save
-      redirect_to movies_url, notice: "Movie marked as unwatched"
+      respond_to do |format|
+        format.html {redirect_to movies_url, notice: "Movie marked as unwatched"}
+        format.js
+      end
     else
       redirect_to movies_url, notice: "There was an error marking your movie as unwatched"
     end

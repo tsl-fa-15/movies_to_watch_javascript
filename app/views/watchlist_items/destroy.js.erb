@@ -1,1 +1,7 @@
+// for movies index
+$('#remove_movie_<%= @watchlist_item.movie_id %>_from_watchlist').replaceWith('<%= j(render('movies/watchlist_button', the_movie: @watchlist_item.movie)) %>');
+$('#mark_movie_<%= @watchlist_item.movie_id %>_unwatched').replaceWith('<%= j(render('movies/watched_button', movie: @watchlist_item.movie)) %>')
+
+
+// for watchlist items index
 $('#watchlist_item_<%= @watchlist_item.id %>').fadeOut();

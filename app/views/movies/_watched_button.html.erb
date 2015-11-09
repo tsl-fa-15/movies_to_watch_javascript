@@ -1,24 +1,12 @@
 <% watchlist_item = WatchlistItem.where(movie_id: movie.id, user_id: current_user.id).first %>
 <% if watchlist_item %>
   <% if watchlist_item.watched == true %>
-    <%= link_to unwatch_watchlist_item_path(watchlist_item), method: :patch, class: 'btn btn-warning movie-panel-button' do %>
+    <%= link_to unwatch_watchlist_item_path(watchlist_item), method: :patch, remote: true, id: "mark_movie_#{movie.id}_unwatched", class: 'btn btn-warning movie-panel-button' do %>
       <i class="fa fa-times"></i> Mark as unwatched
     <% end %>
   <% else %>
-    <%= form_tag watch_watchlist_item_path, class: 'movie-panel-button' do %>
-      <input type="hidden" value="<%= current_user.id %>" name="user_id">
-      <input type="hidden" value="<%= movie.id %>" name="movie_id">
-      <button class="btn btn-success">
-        <i class="fa fa-check"></i> Mark as watched
-      </button>
-    <% end %>
+    <%= render 'movies/mark_as_watched_button', movie: movie %>
   <% end %>
 <% else %>
-  <%= form_tag watch_watchlist_item_path, class: 'movie-panel-button' do %>
-    <input type="hidden" value="<%= current_user.id %>" name="user_id">
-    <input type="hidden" value="<%= movie.id %>" name="movie_id">
-    <button class="btn btn-success">
-      <i class="fa fa-check"></i> Mark as watched
-    </button>
-  <% end %>
+  <%= render 'movies/mark_as_watched_button', movie: movie %>
 <% end %>
